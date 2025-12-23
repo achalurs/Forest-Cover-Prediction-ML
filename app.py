@@ -41,7 +41,7 @@ def load_model():
     # XGBoost model
     model = XGBClassifier(
         n_estimators=200,
-        max_depth=8,
+        max_depth=6,
         learning_rate=0.1,
         subsample=0.8,
         objective="multi:softmax",
