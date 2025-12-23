@@ -4,28 +4,15 @@ import numpy as np
 import joblib
 import os
 
-# ======================================================
-# PAGE CONFIG
-# ======================================================
-st.set_page_config(
-    page_title="Forest Cover Prediction",
-    page_icon="🌲",
-    layout="wide"
-)
-
-# ======================================================
-# LOAD MODEL & SCALER SAFELY
-# ======================================================
 MODEL_PATH = "xgboost_forest_model.pkl"
 SCALER_PATH = "xgboost_scaler.pkl"
 
 if not os.path.exists(MODEL_PATH) or not os.path.exists(SCALER_PATH):
-    st.error("❌ Model not found. Please run xgboost_forest_cover.py first.")
-    st.stop()
+    st.info("⏳ Training model for first-time use. Please wait...")
+    os.system("python xgboost_forest_cover.py")
 
 model = joblib.load(MODEL_PATH)
 scaler = joblib.load(SCALER_PATH)
-
 # ======================================================
 # SIDEBAR NAVIGATION
 # ======================================================
